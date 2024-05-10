@@ -1,25 +1,29 @@
-import { useSignal } from "@preact/signals";
-import Counter from "../islands/Counter.tsx";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import Stream from "../islands/Stream.tsx";
 
-export default function Home() {
-  const count = useSignal(3);
+interface Data {
+  query: string;
+}
+
+export const handler: Handlers<Data> = {
+  GET(req, ctx) {
+    const url = new URL(req.url);
+    const query = url.searchParams.get("q") || "";
+    return ctx.render({ query });
+  },
+};
+
+export default function Home({ data }: PageProps<Data>) {
+  const { query } = data;
   return (
-    <div class="px-4 py-8 mx-auto bg-[#86efac]">
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        <img
-          class="my-6"
-          src="/logo.svg"
-          width="128"
-          height="128"
-          alt="the Fresh logo: a sliced lemon dripping with juice"
-        />
-        <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
-        <p class="my-4">
-          Try updating this message in the
-          <code class="mx-2">./routes/index.tsx</code> file, and refresh.
-        </p>
-        <Counter count={count} />
-      </div>
-    </div>
+    <main>
+      <h1>Local LLM</h1>
+      <p>This is a local LLM</p>
+      <Stream query={query} />
+      <form>
+        <textarea placeholder="Answer" name="q"></textarea>
+        <button type="submit">Ask</button>
+      </form>
+    </main>
   );
 }
