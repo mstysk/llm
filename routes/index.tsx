@@ -1,10 +1,10 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+
 import Stream from "../islands/Stream.tsx";
 
 interface Data {
   query: string;
 }
-
 export const handler: Handlers<Data> = {
   GET(req, ctx) {
     const url = new URL(req.url);
