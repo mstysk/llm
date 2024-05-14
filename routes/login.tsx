@@ -25,10 +25,10 @@ export const handler: Handlers<StateSession, WithSession> = {
     ctx.state.session.flash("codeVerifier", codeVerifier);
     ctx.state.session.set("codeVerifier", codeVerifier);
     return new Response(null, {
-        status: 302,
-        headers: new Headers({
-            Location: uri.toString(),
-        }),
+      status: 302,
+      headers: new Headers({
+        Location: uri.toString(),
+      }),
     });
   },
 };
