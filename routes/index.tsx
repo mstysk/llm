@@ -1,38 +1,22 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { WithSession } from "https://deno.land/x/fresh_session@0.1.4/mod.ts";
-import { User } from "./callback.tsx";
-import { verifyJWT } from "../util/jwt.ts";
+import { User } from "../middlewares/authorize.ts";
+import { WithUser } from "../middlewares/authorize.ts";
 
 type Data = {
   isLoggdedIn: boolean;
   user: User | null;
 };
 
-export const handler: Handlers<Data, WithSession> = {
-  async GET(_req, ctx) {
-    const jwt = ctx.state.session.get("jwt");
-    if (!jwt) {
-      return ctx.render({
-        isLoggdedIn: false,
-        user: null,
-      });
-    }
-
-    console.log(jwt);
-    const payload = await verifyJWT(jwt);
-
-    console.log(payload);
-
-    if (!payload) {
-      return ctx.render({
-        isLoggdedIn: false,
-        user: null,
-      });
-    }
-
-    const user = payload as User;
+export const handler: Handlers<Data, WithUser> = {
+  GET(_req, ctx) {
+    const user = ctx.state.user;
     console.log(user);
-
+    if (!user) {
+      return ctx.render({
+        isLoggdedIn: false,
+        user: null,
+      });
+    }
     return ctx.render({
       isLoggdedIn: true,
       user,

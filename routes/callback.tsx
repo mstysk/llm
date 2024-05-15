@@ -27,6 +27,7 @@ export const handler: Handlers<Data, WithSession> = {
       });
 
       const res = await userResponse.json();
+
       const user: User = {
         login: res.login,
         name: res.name,
@@ -37,13 +38,15 @@ export const handler: Handlers<Data, WithSession> = {
 
       ctx.state.session.set("jwt", jwt);
 
+      const redirect = ctx.state.session.get("redirectUrl");
       return new Response(null, {
         status: 302,
         headers: {
-          Location: "/",
+          Location: redirect || "/",
         },
       });
     } catch (e) {
+      console.log(e);
       return new Response(null, {
         status: 302,
         headers: {

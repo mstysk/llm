@@ -10,28 +10,54 @@ import {
   WithUser,
 } from "../middlewares/authorize.ts";
 
+import {
+  run as redirectMiddleware,
+  WithAuthRedirect,
+} from "../middlewares/redirect.ts";
+
 export type State = WithSession;
 
-const protectedRoutes = [
-  "/",
-  "/chat",
+type ProtectedRoutes = {
+  path: string;
+  autoRedirect: boolean;
+};
+
+const protectedRoutes: ProtectedRoutes[] = [
+  {
+    path: "/chat",
+    autoRedirect: true,
+  },
+  {
+    path: "/",
+    autoRedirect: false,
+  },
 ];
 
 export const handler = [
   cookieSession,
+  async function redirect(
+    req: Request,
+    ctx: FreshContext<WithSession & WithAuthRedirect>,
+  ) {
+    if (
+      protectedRoutes.some((route) =>
+        route.autoRedirect && route.path === new URL(req.url).pathname
+      )
+    ) {
+      return await redirectMiddleware(req, ctx);
+    }
+    return await ctx.next();
+  },
   async function authorize(
     req: Request,
     ctx: FreshContext<WithSession & WithUser>,
   ) {
-    if (protectedRoutes.includes(req.url)) {
-      return authoirzeMiddleware(req, ctx);
+    const route = protectedRoutes.find((route) =>
+      route.path === new URL(req.url).pathname
+    );
+    if (!route) {
+      return await ctx.next();
     }
-    return await ctx.next();
+    return await authoirzeMiddleware(req, ctx, route.autoRedirect);
   },
 ];
-
-//export function handler(
-//  req: Request,
-//  ctx: FreshContext<State>,
-//) {
-//}

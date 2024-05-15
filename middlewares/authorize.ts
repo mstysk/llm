@@ -1,4 +1,3 @@
-import { Request } from "https://deno.land/std@0.148.0/http/mod.ts";
 import { type FreshContext } from "https://deno.land/x/fresh@1.6.8/server.ts";
 import { WithSession } from "https://deno.land/x/fresh_session@0.1.4/mod.ts";
 import { verifyJWT } from "../util/jwt.ts";
@@ -17,38 +16,38 @@ export type WithUser = {
 export async function run(
   _: Request,
   ctx: FreshContext<WithSession & WithUser>,
-): Promise<Response | void> {
+  redirect = true,
+): Promise<Response> {
+  console.log("authorize");
   const jwt = ctx.state.session.get("jwt");
 
   if (!jwt) {
-      return loginRedirectResponse();
+    return redirect ? loginRedirectResponse() : await ctx.next();
   }
 
   const payload = await verifyJWT(jwt);
+  console.log(payload);
 
   if (!payload) {
-      return loginRedirectResponse();
+    return redirect ? loginRedirectResponse() : await ctx.next();
   }
 
   if (!isUser(payload)) {
-      return loginRedirectResponse();
+    return redirect ? loginRedirectResponse() : await ctx.next();
   }
 
   ctx.state.user = payload;
-
   return await ctx.next();
 }
 
-const loginRedirectResponse = () =>  new Response(null, {
+const loginRedirectResponse = () =>
+  new Response(null, {
     status: 302,
     headers: {
-        Location: "/login",
+      Location: "/login",
     },
-});
+  });
 
 function isUser(payload: Payload): payload is User {
-    if (payload.login && payload.name && payload.email) {
-        return true;
-    }
-    return false;
+  return (payload.login && payload.name && payload.email) ? true : false;
 }
