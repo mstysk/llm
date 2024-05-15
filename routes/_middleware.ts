@@ -5,11 +5,33 @@ import {
   WithSession,
 } from "https://deno.land/x/fresh_session@0.1.4/mod.ts";
 
+import {
+  run as authoirzeMiddleware,
+  WithUser,
+} from "../middlewares/authorize.ts";
+
 export type State = WithSession;
 
-export function handler(
-  req: Request,
-  ctx: FreshContext<State>,
-) {
-  return cookieSession(req, ctx);
-}
+const protectedRoutes = [
+  "/",
+  "/chat",
+];
+
+export const handler = [
+  cookieSession,
+  async function authorize(
+    req: Request,
+    ctx: FreshContext<WithSession & WithUser>,
+  ) {
+    if (protectedRoutes.includes(req.url)) {
+      return authoirzeMiddleware(req, ctx);
+    }
+    return await ctx.next();
+  },
+];
+
+//export function handler(
+//  req: Request,
+//  ctx: FreshContext<State>,
+//) {
+//}
