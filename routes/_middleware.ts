@@ -10,9 +10,7 @@ import {
   WithUser,
 } from "../middlewares/authorize.ts";
 
-import {
-  run as redirectMiddleware,
-} from "../middlewares/redirect.ts";
+import { run as redirectMiddleware } from "../middlewares/redirect.ts";
 
 export type State = WithSession;
 
@@ -59,4 +57,4 @@ export const handler = [
     }
     return await authoirzeMiddleware(req, ctx, route.autoRedirect);
   },
-]
+];

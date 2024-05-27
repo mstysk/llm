@@ -1,9 +1,9 @@
-import { PageProps } from '$fresh/server.ts';
+import { PageProps } from "$fresh/server.ts";
 
-export default function Layout({ Component}: PageProps) {
-    return (
-        <div className="layout">
-            <Component />
-        </div>
-    );
+export default function Layout({ Component }: PageProps) {
+  return (
+    <div class="bg-sky-500">
+      <Component />
+    </div>
+  );
 }

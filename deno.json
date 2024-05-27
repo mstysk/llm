@@ -31,9 +31,9 @@
     "preact": "https://esm.sh/preact@10.19.6/",
     "class-variance-authority": "https://esm.sh/class-variance-authority@0.7.0",
     "clsx": "https://esm.sh/clsx@2.0.0",
-    "tailwindcss": "npm:tailwindcss@3.4.1",
-    "tailwindcss/": "npm:tailwindcss@3.4.1/",
-    "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin"
+    "tailwindcss": "npm:tailwindcss@3.4.3",
+    "tailwindcss/": "npm:tailwindcss@3.4.3/",
+    "tailwindcss/plugin": "npm:/tailwindcss@3.4.3/plugin"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

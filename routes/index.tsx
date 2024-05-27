@@ -40,7 +40,7 @@ export default function Index({ data }: PageProps<Data>) {
         )
         : (
           <>
-            <p>Guest</p>
+            <p className="">Guest</p>
             <a href="/login">Login</a>
           </>
         )}
