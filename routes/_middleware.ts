@@ -12,7 +12,6 @@ import {
 
 import {
   run as redirectMiddleware,
-  WithAuthRedirect,
 } from "../middlewares/redirect.ts";
 
 export type State = WithSession;
@@ -37,7 +36,7 @@ export const handler = [
   cookieSession,
   async function redirect(
     req: Request,
-    ctx: FreshContext<WithSession & WithAuthRedirect>,
+    ctx: FreshContext<WithSession>,
   ) {
     if (
       protectedRoutes.some((route) =>
@@ -60,4 +59,4 @@ export const handler = [
     }
     return await authoirzeMiddleware(req, ctx, route.autoRedirect);
   },
-];
+]
