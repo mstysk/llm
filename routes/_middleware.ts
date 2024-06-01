@@ -9,13 +9,14 @@ import {
 import { run as redirectMiddleware } from "../middlewares/redirect.ts";
 import { MiddlewareHandlerContext } from "https://deno.land/x/fresh@1.0.1/server.ts";
 import { StateWithSession } from "../lib/domain/State.ts";
+import { cookieOptions } from "../config/index.ts";
 
 type ProtectedRoutes = {
   path: string;
   autoRedirect: boolean;
 };
 
-const session = cookieSession();
+const session = cookieSession(cookieOptions)
 
 const protectedRoutes: ProtectedRoutes[] = [
   {
