@@ -12,8 +12,6 @@ import {
 
 import { run as redirectMiddleware } from "../middlewares/redirect.ts";
 
-export type State = WithSession;
-
 type ProtectedRoutes = {
   path: string;
   autoRedirect: boolean;
