@@ -33,7 +33,16 @@
     "clsx": "https://esm.sh/clsx@2.0.0",
     "tailwindcss": "npm:tailwindcss@3.4.3",
     "tailwindcss/": "npm:tailwindcss@3.4.3/",
-    "tailwindcss/plugin": "npm:/tailwindcss@3.4.3/plugin"
+    "tailwindcss/plugin": "npm:/tailwindcss@3.4.3/plugin",
+    "@radix-ui/primitive": "https://esm.sh/*@radix-ui/primitive@1.0.1",
+    "@radix-ui/react-primitive": "https://esm.sh/v132/*@radix-ui/react-primitive@1.0.3?alias=react:preact/compat,react-dom:preact/compat,@types/react:preact/compat",
+    "@radix-ui/react-use-layout-effect": "https://esm.sh/v132/*@radix-ui/react-use-layout-effect@1.0.1?alias=react:preact/compat,@types/react:preact/compat",
+    "@radix-ui/react-avatar": "https://esm.sh/v132/*@radix-ui/react-avatar@1.0.4?alias=react:preact/compat,@types/react:preact/compat",
+    "@radix-ui/react-use-callback-ref": "https://esm.sh/v132/*@radix-ui/react-use-callback-ref@1.0.1?alias=react:preact/compat,@types/react:preact/compat",
+    "@radix-ui/react-context": "https://esm.sh/v132/*@radix-ui/react-context@1.0.1?alias=react:preact/compat,@types/react:preact/compat",
+    "@babel/runtime/helpers/esm/extends": "https://esm.sh/@babel/runtime@7.23.1/helpers/esm/extends",
+    "@radix-ui/react-slot": "https://esm.sh/v132/*@radix-ui/react-slot@1.0.2?alias=react:preact/compat,@types/react:preact/compat",
+    "@radix-ui/react-compose-refs": "https://esm.sh/v132/*@radix-ui/react-compose-refs@1.0.1?alias=react:preact/compat,@types/react:preact/compat"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

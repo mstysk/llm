@@ -17,6 +17,7 @@ import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $logout from "./routes/logout.tsx";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $Sidebar from "./islands/Sidebar.tsx";
 import * as $Stream from "./islands/Stream.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -39,6 +40,7 @@ const manifest = {
   },
   islands: {
     "./islands/Counter.tsx": $Counter,
+    "./islands/Sidebar.tsx": $Sidebar,
     "./islands/Stream.tsx": $Stream,
   },
   baseUrl: import.meta.url,
