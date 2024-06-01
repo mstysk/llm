@@ -3,6 +3,7 @@ import { WithSession } from "https://deno.land/x/fresh_session@0.1.4/mod.ts";
 import { Session } from "https://deno.land/x/oak_sessions@v4.0.5/mod.ts";
 import { OAuth2Client, Tokens } from "https://deno.land/x/oauth2_client/mod.ts";
 import { AuthorizationUriWithVerifier } from "https://deno.land/x/oauth2_client@v1.0.2/src/authorization_code_grant.ts";
+import { Button } from "../components/Button.tsx";
 
 interface OAuthClient {
   client: OAuth2Client;
@@ -80,15 +81,15 @@ export const handler: Handlers<StateSession, WithSession> = {
 export default function Login() {
   return (
     <main>
-      <h1>Local LLM</h1>
-      <p>This is a local LLM</p>
       <form method="post">
-        <button type="submit" name="client" value="github">
-          Login with GitHub
-        </button>
-        <button type="submit" name="client" value="gitlab">
-          Login with Gitlab
-        </button>
+        <div class="flex justify-stretch">
+          <Button type="submit" class="" name="client" value="github">
+            Login with GitHub
+          </Button>
+          <Button type="submit" class="ml-5" name="client" value="gitlab">
+            Login with Gitlab
+          </Button>
+        </div>
       </form>
     </main>
   );
