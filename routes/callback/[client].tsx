@@ -44,7 +44,6 @@ export const handler: Handlers<Data, WithSession> = {
         ),
       );
 
-      ctx.state.session.set("user", user);
       ctx.state.session.set("jwt", jwt);
       const redirect = ctx.state.session.get("redirectUrl");
       return new Response(null, {
