@@ -1,6 +1,8 @@
-export const cookieOptions = {
+import { CookieOptions } from "https://deno.land/x/fresh_session@0.2.0/src/stores/cookie_option.ts";
+
+export const cookieOptions:CookieOptions = {
     secure: true,
     sameSite: "Strict",
     httpOnly: false,
-    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7)
+    maxAge: 60 * 60 * 24 * 7,
 } as const;
