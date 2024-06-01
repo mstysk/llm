@@ -16,7 +16,7 @@ type ProtectedRoutes = {
   autoRedirect: boolean;
 };
 
-const session = cookieSession(cookieOptions)
+const session = cookieSession(cookieOptions);
 
 const protectedRoutes: ProtectedRoutes[] = [
   {
