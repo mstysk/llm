@@ -7,7 +7,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
 import * as $api_chat from "./routes/api/chat.ts";
-import * as $callback from "./routes/callback.tsx";
+import * as $callback_client_ from "./routes/callback/[client].tsx";
 import * as $chat from "./routes/chat.tsx";
 import * as $error from "./routes/error.tsx";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
@@ -25,7 +25,7 @@ const manifest = {
     "./routes/_layout.tsx": $_layout,
     "./routes/_middleware.ts": $_middleware,
     "./routes/api/chat.ts": $api_chat,
-    "./routes/callback.tsx": $callback,
+    "./routes/callback/[client].tsx": $callback_client_,
     "./routes/chat.tsx": $chat,
     "./routes/error.tsx": $error,
     "./routes/greet/[name].tsx": $greet_name_,

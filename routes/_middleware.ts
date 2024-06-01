@@ -1,9 +1,5 @@
-import { type FreshContext } from "https://deno.land/x/fresh@1.6.8/server.ts";
-
-import {
-  cookieSession,
-  WithSession,
-} from "https://deno.land/x/fresh_session@0.1.4/mod.ts";
+import { type FreshContext } from "@fresh-server";
+import { cookieSession, WithSession } from "@fresh-session";
 
 import {
   run as authoirzeMiddleware,
@@ -11,11 +7,15 @@ import {
 } from "../middlewares/authorize.ts";
 
 import { run as redirectMiddleware } from "../middlewares/redirect.ts";
+import { MiddlewareHandlerContext } from "https://deno.land/x/fresh@1.0.1/server.ts";
+import { StateWithSession } from "../lib/domain/State.ts";
 
 type ProtectedRoutes = {
   path: string;
   autoRedirect: boolean;
 };
+
+const session = cookieSession();
 
 const protectedRoutes: ProtectedRoutes[] = [
   {
@@ -29,7 +29,12 @@ const protectedRoutes: ProtectedRoutes[] = [
 ];
 
 export const handler = [
-  cookieSession,
+  function sessionHandler(
+    req: Request,
+    ctx: MiddlewareHandlerContext<StateWithSession>,
+  ) {
+    return session(req, ctx);
+  },
   async function redirect(
     req: Request,
     ctx: FreshContext<WithSession>,

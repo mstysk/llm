@@ -13,7 +13,6 @@ export async function run(
   ctx: FreshContext<WithSession & WithUser>,
   redirect = true,
 ): Promise<Response> {
-  console.log("authorize");
   const jwt = ctx.state.session.get("jwt");
 
   if (!jwt) {
@@ -21,7 +20,6 @@ export async function run(
   }
 
   const payload = await verifyJWT(jwt);
-  console.log(payload);
 
   if (!payload) {
     return redirect ? loginRedirectResponse() : await ctx.next();
@@ -44,5 +42,5 @@ const loginRedirectResponse = () =>
   });
 
 function isUser(payload: Payload): payload is User {
-  return (payload.login && payload.name && payload.email) ? true : false;
+  return (payload.name && payload.email) ? true : false;
 }

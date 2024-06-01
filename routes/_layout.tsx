@@ -3,7 +3,9 @@ import { PageProps } from "$fresh/server.ts";
 import Sidebar from "../islands/Sidebar.tsx";
 import { State } from "../lib/domain/State.ts";
 
-export default function Layout({ Component, state }: PageProps<undefined, State>) {
+export default function Layout(
+  { Component, state }: PageProps<undefined, State>,
+) {
   return (
     <div class="">
       <button

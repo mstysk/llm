@@ -1,4 +1,4 @@
-import { type FreshContext } from "https://deno.land/x/fresh@1.6.8/server.ts";
+import { type FreshContext } from "@fresh-server";
 import { WithSession } from "https://deno.land/x/fresh_session@0.1.4/mod.ts";
 
 export async function run(
