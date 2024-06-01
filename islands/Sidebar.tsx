@@ -1,3 +1,9 @@
+import {
+  Command,
+  CommandGroup,
+  CommandItem,
+  CommandList,
+} from "../components/Command.tsx";
 import { Login } from "../components/Login.tsx";
 import { Logout } from "../components/Logout.tsx";
 import { Profile } from "../components/Profile.tsx";
@@ -18,6 +24,17 @@ export default function Sidebar({ user }: Props) {
         {user
           ? (
             <li>
+              <Command>
+                <CommandList>
+                  <CommandGroup heading="General">
+                    <CommandItem>
+                      <a href="/chat">
+                        Chat
+                      </a>
+                    </CommandItem>
+                  </CommandGroup>
+                </CommandList>
+              </Command>
               <a href="/chat" class="flex items-center space-x-2.5">
                 <span>Chat</span>
               </a>
