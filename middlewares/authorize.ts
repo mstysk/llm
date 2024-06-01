@@ -2,12 +2,7 @@ import { type FreshContext } from "https://deno.land/x/fresh@1.6.8/server.ts";
 import { WithSession } from "https://deno.land/x/fresh_session@0.1.4/mod.ts";
 import { verifyJWT } from "../util/jwt.ts";
 import { Payload } from "https://deno.land/x/djwt@v2.7/mod.ts";
-
-export type User = {
-  login: string;
-  name: string;
-  email: string;
-};
+import { User } from "../lib/domain/User.ts";
 
 export type WithUser = {
   user: User;

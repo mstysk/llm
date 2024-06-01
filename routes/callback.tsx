@@ -2,7 +2,7 @@ import { Handlers } from "$fresh/server.ts";
 import { WithSession } from "https://deno.land/x/fresh_session@0.1.4/mod.ts";
 import { oauth2Client } from "./login.tsx";
 import { createJWT } from "../util/jwt.ts";
-import { User } from "../middlewares/authorize.ts";
+import { User } from "../lib/domain/User.ts";
 
 interface Data {
   user: User;
@@ -27,11 +27,13 @@ export const handler: Handlers<Data, WithSession> = {
       });
 
       const res = await userResponse.json();
+      console.log(res);
 
       const user: User = {
         login: res.login,
         name: res.name,
         email: res.email,
+        avatar_url: res.avatar_url,
       };
 
       const jwt = await createJWT(user);

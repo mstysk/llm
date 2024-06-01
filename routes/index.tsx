@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { User } from "../middlewares/authorize.ts";
+import { User } from "../lib/domain/User.ts";
 import { WithUser } from "../middlewares/authorize.ts";
 
 type Data = {
