@@ -28,16 +28,11 @@ export default function Sidebar({ user }: Props) {
                 <CommandList>
                   <CommandGroup heading="General">
                     <CommandItem>
-                      <a href="/chat">
-                        Chat
-                      </a>
+                      <a href="/chat">New</a>
                     </CommandItem>
                   </CommandGroup>
                 </CommandList>
               </Command>
-              <a href="/chat" class="flex items-center space-x-2.5">
-                <span>Chat</span>
-              </a>
               <Profile user={user} />
               <Logout />
             </li>
