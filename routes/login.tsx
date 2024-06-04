@@ -41,7 +41,7 @@ export const clients: Record<OAuthClients, OAuthClient> = {
       tokenUri: Deno.env.get("GITLAB_TOKEN_URL")!,
       redirectUri: "http://localhost:8000/callback/gitlab",
       defaults: {
-        scope: "openid email profile",
+        scope: "profile email",
       },
     }),
     userInfoUrl: Deno.env.get("GITLAB_USERINFO_URL")!,

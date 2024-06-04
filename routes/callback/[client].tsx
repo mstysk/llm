@@ -24,6 +24,9 @@ export const handler: Handlers<Data, WithSession> = {
         });
       }
 
+      console.log(`callback: ${client} ${codeVerifier}`);
+
+      console.log(req.url);
       const token = await getToken(client, req.url, codeVerifier);
 
       const userResponse = await getUserInfo(client, token);
