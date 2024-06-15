@@ -14,6 +14,7 @@ import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $logout from "./routes/logout.tsx";
+import * as $Form from "./islands/Form.tsx";
 import * as $Sidebar from "./islands/Sidebar.tsx";
 import * as $Stream from "./islands/Stream.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -34,6 +35,7 @@ const manifest = {
     "./routes/logout.tsx": $logout,
   },
   islands: {
+    "./islands/Form.tsx": $Form,
     "./islands/Sidebar.tsx": $Sidebar,
     "./islands/Stream.tsx": $Stream,
   },
