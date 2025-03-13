@@ -1,12 +1,5 @@
-import {
-  Command,
-  CommandGroup,
-  CommandItem,
-  CommandList,
-} from "../components/Command.tsx";
 import { Login } from "../components/Login.tsx";
 import { Logout } from "../components/Logout.tsx";
-import { Profile } from "../components/Profile.tsx";
 import { User } from "../lib/domain/User.ts";
 
 type Props = {
@@ -24,16 +17,7 @@ export default function Sidebar({ user }: Props) {
         {user
           ? (
             <li>
-              <Command>
-                <CommandList>
-                  <CommandGroup heading="General">
-                    <CommandItem>
-                      <a href="/chat">New</a>
-                    </CommandItem>
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-              <Profile user={user} />
+              <a href="/chat">New</a>
               <Logout />
             </li>
           )

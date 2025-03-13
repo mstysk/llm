@@ -26,7 +26,7 @@
     "$std/": "https://deno.land/std@0.216.0/",
     "@fresh-server": "https://deno.land/x/fresh@1.6.8/server.ts",
     "@fresh-session": "https://deno.land/x/fresh_session@0.2.0/mod.ts",
-    "@langchain/community": "npm:@langchain/community@^0.0.55",
+    "@langchain/community": "npm:@langchain/community@^0.3.34",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
     "preact/": "https://esm.sh/preact@10.19.6/",
@@ -34,9 +34,9 @@
     "preact-render-to-string": "https://deno.land/x/drip@0.0.16/preact/render-to-string.ts",
     "class-variance-authority": "https://esm.sh/class-variance-authority@0.7.0",
     "clsx": "https://esm.sh/clsx@2.0.0",
-    "tailwindcss": "npm:tailwindcss@3.4.3",
-    "tailwindcss/": "npm:tailwindcss@3.4.3/",
-    "tailwindcss/plugin": "npm:/tailwindcss@3.4.3/plugin",
+    "tailwindcss": "npm:tailwindcss@3.4.1",
+    "tailwindcss/": "npm:/tailwindcss@3.4.1/",
+    "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
     "@radix-ui/primitive": "https://esm.sh/*@radix-ui/primitive@1.0.1",
     "@radix-ui/react-label": "https://esm.sh/v132/*@radix-ui/react-label@2.0.2?alias=react:preact/compat,@types/react:preact/compat",
     "@radix-ui/react-primitive": "https://esm.sh/v132/*@radix-ui/react-primitive@1.0.3?alias=react:preact/compat,react-dom:preact/compat,@types/react:preact/compat",
@@ -47,7 +47,6 @@
     "@babel/runtime/helpers/esm/extends": "https://esm.sh/@babel/runtime@7.23.1/helpers/esm/extends",
     "@radix-ui/react-slot": "https://esm.sh/v132/*@radix-ui/react-slot@1.0.2?alias=react:preact/compat,@types/react:preact/compat",
     "@radix-ui/react-compose-refs": "https://esm.sh/v132/*@radix-ui/react-compose-refs@1.0.1?alias=react:preact/compat,@types/react:preact/compat",
-    "@radix-ui/react-dialog": "https://esm.sh/v132/*@radix-ui/react-dialog@1.0.5?alias=react:preact/compat,@types/react:preact/compat",
     "@radix-ui/react-focus-guards": "https://esm.sh/v132/*@radix-ui/react-focus-guards@1.0.1?alias=react:preact/compat,@types/react:preact/compat",
     "@radix-ui/react-presence": "https://esm.sh/v132/*@radix-ui/react-presence@1.0.1?alias=react:preact/compat,react-dom:preact/compat,@types/react:preact/compat",
     "@radix-ui/react-portal": "https://esm.sh/v132/*@radix-ui/react-portal@1.0.4?alias=react:preact/compat,react-dom:preact/compat,@types/react:preact/compat",
@@ -73,5 +72,6 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
-  }
+  },
+  "nodeModulesDir": "auto"
 }
